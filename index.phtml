@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<h1>List</h1>
+<?php
+foreach ($emploees as $emploee):?>  <!--упрощенный синтаксис-->
+    <ul>
+        <li>
+            <b>Name: </b><?=$emploee['name'] ?> <br>
+            <b>Age: </b><?=$emploee['age'] ?> <br>
+            <b>Home: </b><?=$emploee['home'] ?? 'no information' ?> <br> <!--тернарный оператор, возвращает 1-е значение если true, и 2-е если false-->
+        </li>
+        <hr>
+    </ul>
+<?php endforeach; ?>  <!--упрощенный синтаксис-->
+</body>
+</html>
