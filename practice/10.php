@@ -1,13 +1,14 @@
 <?php
 
-$is_console = (isset($argv));
-$line_breaker = $is_console ? PHP_EOL : '<br>';
+$is_console = (isset($argv)); /*определяем есть ли аргументы в переменной,
+                                тем самый определяем была ли тиспользованны консоль*/
+$line_breaker = $is_console ? PHP_EOL : '<br>'; // исходя из выщшше определенного создаем лайнбрейкер
 
-   if ($is_console){
-       if (!isset($argv[1])){
+   if ($is_console){ //если консоль
+       if (!isset($argv[1])){ // и аргумеенты не введены
            die ('Day is empty. Enter argument between 1 and 7' . $line_breaker);
        }
-       $day = $argv['1'];
+       $day = $argv['1']; // иначе присваиваем значение в переменную  $day
    }
   else {
       if (!isset($_GET ['day'])){
