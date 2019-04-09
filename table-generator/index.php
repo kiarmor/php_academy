@@ -1,8 +1,17 @@
 <?php
 
 define('MIN', 1);
-define('MAX', 10);
-$numbers = range(MIN, MAX);
+define('MAX', 20);
+
+$colEnd = rand(MIN, MAX);
+$rowEnd = rand(MIN, MAX);
+
+$numberRow = range(1, $rowEnd);
+$numberCol = range(1, $colEnd);
+
+/*$min = min($start, $end);
+$max = max($start, $end);*/
+/*$numbers = range($min, $max);*/
 
 ?>
 
@@ -17,11 +26,17 @@ $numbers = range(MIN, MAX);
 </head>
 <body>
 <h1>Table</h1>
+<!--<b><?/*=$min*/?></b>
+<b><?/*=$max*/?></b>-->
     <table border="1">
-        <?php foreach ($numbers as $numberRow) :  ?>
-        <tr>
-            <?php foreach ($numbers as $numberCol) :  ?>
-            <td> <?=$numberRow * $numberCol ?>   </td>
+        <?php foreach ($numberRow as $nr) :
+            $r = rand(1, 255);
+            $g = rand(1, 255);
+            $b = rand(1, 255);
+            ?>
+        <tr style="background: rgb(<?=$r ?>, <?=$g ?>, <?=$b ?>)">
+            <?php foreach ($numberCol as $nc) : ?>
+            <td> <?=$nr * $nc ?>   </td>
             <?php endforeach; ?>
         </tr>
         <?php endforeach; ?>
