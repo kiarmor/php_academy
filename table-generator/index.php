@@ -1,18 +1,7 @@
 <?php
 
-$numberRow = $_GET['rows'] ? range(1, $_GET['rows']) : null;
-$numberCol = $_GET['cols'] ? range(1, $_GET['cols']) : null;
-
-
-/*define('MIN', 1);
-define('MAX', 20);
-
-$colEnd = rand(MIN, MAX);
-$rowEnd = rand(MIN, MAX);
-
-$numberRow = range(1, $rowEnd);
-$numberCol = range(1, $colEnd);*/
-
+$numberRow = isset($_GET['rows']) ? range(1, $_GET['rows']) : null;
+$numberCol = isset($_GET['cols']) ? range(1, $_GET['cols']) : null;
 
 ?>
 
