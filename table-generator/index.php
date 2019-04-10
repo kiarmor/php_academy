@@ -1,17 +1,18 @@
 <?php
 
-define('MIN', 1);
+$numberRow = $_GET['rows'] ? range(1, $_GET['rows']) : null;
+$numberCol = $_GET['cols'] ? range(1, $_GET['cols']) : null;
+
+
+/*define('MIN', 1);
 define('MAX', 20);
 
 $colEnd = rand(MIN, MAX);
 $rowEnd = rand(MIN, MAX);
 
 $numberRow = range(1, $rowEnd);
-$numberCol = range(1, $colEnd);
+$numberCol = range(1, $colEnd);*/
 
-/*$min = min($start, $end);
-$max = max($start, $end);*/
-/*$numbers = range($min, $max);*/
 
 ?>
 
@@ -25,22 +26,33 @@ $max = max($start, $end);*/
     <title>Document</title>
 </head>
 <body>
-<h1>Table</h1>
-<!--<b><?/*=$min*/?></b>
-<b><?/*=$max*/?></b>-->
-    <table border="1">
-        <?php foreach ($numberRow as $nr) :
-            $r = rand(1, 255);
-            $g = rand(1, 255);
-            $b = rand(1, 255);
-            ?>
-        <tr style="background: rgb(<?=$r ?>, <?=$g ?>, <?=$b ?>)">
-            <?php foreach ($numberCol as $nc) : ?>
-            <td> <?=$nr * $nc ?>   </td>
+
+<form>
+    Rows: <input type="number" min="1" max="15" name="rows"> <br>
+    Cols: <input type="number" min="1" max="15" name="cols"> <br>
+    <button>Go</button>
+</form>
+
+<hr>
+
+<?php if (!$numberRow || !$numberCol) : ?>
+    <h1>Enter correct number</h1>
+<?php else : ?>
+    <h1>Table</h1>
+        <table border="1">
+            <?php foreach ($numberRow as $nr) :
+                $r = rand(1, 255);
+                $g = rand(1, 255);
+                $b = rand(1, 255);
+                ?>
+            <tr style="background: rgb(<?=$r ?>, <?=$g ?>, <?=$b ?>)">
+                <?php foreach ($numberCol as $nc) : ?>
+                <td> <?=$nr * $nc ?>   </td>
+                <?php endforeach; ?>
+            </tr>
             <?php endforeach; ?>
-        </tr>
-        <?php endforeach; ?>
-    </table>
+        </table>
+<?php endif; ?>
 
 </body>
 </html>
