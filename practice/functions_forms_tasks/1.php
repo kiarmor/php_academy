@@ -6,6 +6,23 @@
 будет возвращать массив с общими словами.
  */
 
+$firstForm[] = isset($_GET['first']) ?? null;
+$secondForm[] = isset($_GET['second']) ?? null;
+$arr = [];
+
+
+/*function getCommonWords($a, $b){
+    if ($a === $b){
+        $arr [] = $a;
+        return $arr;
+    }
+
+}
+
+getCommonWords($firstForm, $secondForm);*/
+
+var_dump($firstForm);
+var_dump($secondForm);
 
 ?>
 
@@ -22,7 +39,12 @@
 <h1>Task 1</h1>
 
 <form action="">
-    <textare></textare>
+    <textarea name="first" cols="30" rows="10"></textarea>
+    <br>
+    <textarea name="second" cols="30" rows="10"></textarea>
+    <br>
+    <button type="submit">Go</button>
+    <br>
 </form>
 
 </body>
