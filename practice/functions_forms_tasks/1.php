@@ -6,23 +6,22 @@
 будет возвращать массив с общими словами.
  */
 
-$firstForm[] = isset($_GET['first']) ?? null;
-$secondForm[] = isset($_GET['second']) ?? null;
-$arr = [];
 
+$firstForm = isset($_GET['first']) ? $_GET['first'] : null;
+$secondForm = isset($_GET['second']) ?  $_GET['second'] : null;
+$arrF = [];
+$arrS = [];
+$exp = ' ';
+$arrF = explode($exp, $firstForm);
+$arrS = explode($exp, $secondForm);
 
-/*function getCommonWords($a, $b){
-    if ($a === $b){
-        $arr [] = $a;
-        return $arr;
-    }
-
+function getCommonWords(array $a, array $b){
+        $result = array_intersect($a, $b);
+        return $result;
 }
 
-getCommonWords($firstForm, $secondForm);*/
-
-var_dump($firstForm);
-var_dump($secondForm);
+$resultArr = getCommonWords($arrF, $arrS);
+var_dump($resultArr);
 
 ?>
 
