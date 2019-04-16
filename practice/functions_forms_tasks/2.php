@@ -26,12 +26,7 @@ $arr = separate($mess);
 usort($arr, function($a, $b){
     return strlen($b) - strlen($a);
 });
-/*if ($mess!== ' ') {
 
-    for ($i = 0; $i < 3; $i++) {
-        echo $arr[$i] . "<br>";
-    }
-}*/
 
 ?>
 
