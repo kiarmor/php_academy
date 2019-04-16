@@ -26,12 +26,12 @@ $arr = separate($mess);
 usort($arr, function($a, $b){
     return strlen($b) - strlen($a);
 });
-if ($mess!== ' ') {
+/*if ($mess!== ' ') {
 
     for ($i = 0; $i < 3; $i++) {
         echo $arr[$i] . "<br>";
     }
-}
+}*/
 
 ?>
 
@@ -51,6 +51,13 @@ if ($mess!== ' ') {
         <textarea name="message" cols="30" rows="10"></textarea> <br>
         <button type="submit">Send</button>
     </form>
+    <?php if ($mess!== ' ') {
+
+        for ($i = 0; $i < 3; $i++) {
+        echo $arr[$i] . "<br>";
+        }
+    }
+    ?>
 </body>
 </html>
 

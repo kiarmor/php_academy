@@ -6,7 +6,6 @@
 будет возвращать массив с общими словами.
  */
 
-
 $firstForm = isset($_GET['first']) ? $_GET['first'] : null;
 $secondForm = isset($_GET['second']) ?  $_GET['second'] : null;
 $arrF = [];
@@ -21,7 +20,7 @@ function getCommonWords(array $a, array $b){
 }
 
 $resultArr = getCommonWords($arrF, $arrS);
-var_dump($resultArr);
+//var_dump($resultArr);
 
 ?>
 
@@ -45,6 +44,9 @@ var_dump($resultArr);
     <button type="submit">Go</button>
     <br>
 </form>
-
+<?php foreach ($resultArr as $value){
+echo $value . '<br>';
+}
+?>
 </body>
 </html>
