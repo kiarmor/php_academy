@@ -22,7 +22,7 @@ if ($_POST){
 }
 
 
-//var_dump($_FILES['attachment']);
+
 //if size OK
 // if type OK etc
 //move_uploaded_file($_FILES['attachment']['tmp_name'], '/d/PHP_learn/less_1/contact_form ');
