@@ -25,3 +25,5 @@
 
     git checkout HEAD@{1}
 
+5. git config --global alias.tree "log --graph --decorate --pretty=oneline --abbrev-commit"
+    #создает псевдоним tree для отображения дерева каталогов
