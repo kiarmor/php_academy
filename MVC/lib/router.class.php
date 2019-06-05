@@ -10,6 +10,12 @@ class Router
 
     protected $params;
 
+    protected $route;
+
+    protected $method_prefix;
+
+    protected $languages;
+
     /**
      * @return mixed
      */
@@ -42,9 +48,50 @@ class Router
         return $this->params;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getRoute()
+    {
+        return $this->route;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMethodPrefix()
+    {
+        return $this->method_prefix;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLanguages()
+    {
+        return $this->languages;
+    }
+
     public function __construct($uri)
     {
-        //TODO распарсить строку на значения
-        print_r('OK! Router was called with uri: ' . $uri);
+        $this->uri = urldecode(trim($uri, '/'));
+
+        //Get defaults
+        $routes = Config::get('routes');
+        $this->route = Config::get('default_route');
+        $this->method_prefix = isset($routes[$this->route]) ?? '';
+        $this->languages = Config::get('default_language');
+        $this->controller = Config::get('default_controller');
+        $this->action = Config::get('default_action');
+
+        $uri_parts = explode('?', $this->uri);
+
+        //Get part like /lng/controller/action/param1/param2 ...
+        $path = $uri_parts[0];
+        $path_parts = explode('/', $path);
+        echo "<pre>"; print_r($path_parts);
+
+
     }
+
 }
