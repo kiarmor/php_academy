@@ -25,3 +25,6 @@
 
     git checkout HEAD@{1}
 
+6. $ git config --global user.name "John Doe"
+   $ git config --global user.email johndoe@example.com
+   Настройка имени и емеила
