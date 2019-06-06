@@ -14,7 +14,7 @@ class Router
 
     protected $method_prefix;
 
-    protected $languages;
+    protected $language;
 
     /**
      * @return mixed
@@ -67,9 +67,9 @@ class Router
     /**
      * @return mixed
      */
-    public function getLanguages()
+    public function getLanguage()
     {
-        return $this->languages;
+        return $this->language;
     }
 
     public function __construct($uri)
@@ -79,8 +79,8 @@ class Router
         //Get defaults
         $routes = Config::get('routes');
         $this->route = Config::get('default_route');
-        $this->method_prefix = isset($routes[$this->route]) ?? '';
-        $this->languages = Config::get('default_language');
+        $this->method_prefix = isset($routes[$this->route]) ? $routes[$this->route] : '';
+        $this->language = Config::get('default_language');
         $this->controller = Config::get('default_controller');
         $this->action = Config::get('default_action');
 
@@ -89,8 +89,32 @@ class Router
         //Get part like /lng/controller/action/param1/param2 ...
         $path = $uri_parts[0];
         $path_parts = explode('/', $path);
-        echo "<pre>"; print_r($path_parts);
 
+        if (count($path_parts)){
+
+            //Get route or language at first element
+            if (in_array(strtolower(current($path_parts)), array_keys($routes)) ){
+                $this->route = strtolower(current($path_parts));
+                $this->method_prefix = isset($routes[$this->route]) ? $routes[$this->route] : '';
+                array_shift($path_parts);
+            } elseif (in_array(strtolower(current($path_parts)), Config::get('languages')) ){
+                $this->language = strtolower(current($path_parts));
+                array_shift($path_parts);
+            }
+            //Get controller, next element of array
+            if (current($path_parts) ){
+                $this->controller = strtolower(current($path_parts));
+                array_shift($path_parts);
+            }
+            //Get action
+            if (current($path_parts) ){
+                $this->action = strtolower(current($path_parts));
+                array_shift($path_parts);
+            }
+            //Get params -  all the rest
+            $this->params = $path_parts;
+
+        }
 
     }
 

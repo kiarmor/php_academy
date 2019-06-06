@@ -5,7 +5,7 @@ class Config{
 
     public function get($key)
     {
-        return isset(self::$settings[$key]) ?? null;
+        return isset(self::$settings[$key]) ? self::$settings[$key] : null;
         //return isset(self::$settings[$key]) ? self::$settings[$key] : null;
     }
 
